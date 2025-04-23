@@ -1,10 +1,12 @@
-# 1. TXT Files
+#File Types: - TXT - CSV: - Reader - Dict reader -
+# Writer - Writerow - Writerows - JSON - XML
+#  1. TXT Files
 # Normal text files (.txt)
 # Read/Write using simple open modes (r, w, a, etc.)
 # If the file has no data means empty, open it in write mode ('w') to add something first.
 # If the file already has content, open it in read mode ('r') and just read it.
 
-#Writing
+# #Writing
 with open('file.txt', 'w') as file:
     file.write("Hello world!")
 #Reading
@@ -27,7 +29,7 @@ with open('Sample.csv', 'r') as file:
         print(row[2])     # to call any specific value mention index
 
 
-#DictReader:
+#➔ DictReader:
 #Reads CSV into a dictionary (column names as keys).
 # reads the CSV file and treats each row as a dictionary.
 import csv
@@ -36,3 +38,37 @@ with open('Sample.csv', 'r') as file:
     for row in content:
         print(row)
       
+
+
+##➔ Writer :
+# Writes data into CSV.
+import csv
+with open('data.csv', 'w', newline='') as file:
+    content = csv.writer(file)
+    content.writerow(['Name', 'Age'])   # writing headers
+    content.writerow(['Alice', '24'])   # writing a row
+
+
+  # ➔ writerow:
+  # Single row writing (one list at a time). 
+    content.writerow(['Bob', '30'])
+
+
+  # ➔ writerows:
+  # Multiple rows at once (list of lists).
+    list=[
+      ['Charlie', '28'],
+      ['David', '35']
+
+    ]
+    content.writerows(list)
+     # Or we Can do this in this way too
+    content.writerows([
+        ['Charlie', '28'],
+        ['David', '35']
+    ])
+
+
+
+
+ 
